@@ -48,7 +48,7 @@ const store = MongoStore.create({
     touchAfter : 24 * 36000,
 });
 
-store.on("error", ()=>{
+store.on("error", (err)=>{
     console.log("Error in Mongo Session Store", err);
 });
 
@@ -84,13 +84,8 @@ app.use((req, res, next) => {
     next();
 })
 
-app.get("/demoUser", async (req, res) => {
-    let fackUser = new User({
-        email: "Aryaa@0012",
-        username: "Aryaa",
-    })
-    let user = await User.register(fackUser, "123a");
-    res.send(user);
+app.get("/", (req, res) => {
+    res.redirect("/listings");
 });
 
 //home route
