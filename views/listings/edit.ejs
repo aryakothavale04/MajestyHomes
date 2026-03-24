@@ -1,0 +1,87 @@
+<%= layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 px-3 px-md-0">
+                <h3> Edit your listing</h3>
+                <form method="POST" action="/listings/edit/<%=listing._id%>?_method=PUT" class="needs-validation"
+                    novalidate enctype="multipart/form-data">
+
+                    <div>
+                        <label for="title" class="form-label">Title</label>
+                        <input name="listing[title]" value="<%=listing.title%>" type="text" class="form-control"
+                            required>
+                        <div class="invalid-feedback">Please enter a title.</div>
+                    </div>
+
+                    <div>
+                        <label for="description" class="description">Description</label>
+                        <textarea name="listing[description]" class="form-control"
+                            required><%=listing.description%></textarea>
+                        <div class="invalid-feedback">Please enter a short description.</div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        Original Listing Image<br>
+                        <img height="150px" src="<%=originalImageURL%>">
+                    </div>
+
+                    <div>
+                        <label for="image" class="form-label">Edit Image</label>
+                        <input name="listing[image]" class="form-control" type="file">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input name="listing[price]" class="form-control" value="<%=listing.price%>" type="number"
+                                required>
+                            <div class="invalid-feedback">Please enter valid price.</div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input name="listing[country]" class="form-control" value="<%=listing.country%>" type="text"
+                                required>
+                            <div class="invalid-feedback">Please enter country name.</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="location" class="form-label">Location</label>
+                        <input name="listing[location]" class="form-control" value="<%=listing.location%>" type="text"
+                            required>
+                        <div class="invalid-feedback">Please enter location</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="listing[category]" class="form-select" required>
+                            <option value="Rooms" <%=listing.category==="Rooms" ? "selected" : "" %>>Rooms</option>
+
+                            <option value="Villas" <%=listing.category==="Villas" ? "selected" : "" %>>Villas
+                            </option>
+
+                            <option value="Apartments" <%=listing.category==="Apartments" ? "selected" : "" %>
+                                >Apartments</option>
+
+                            <option value="Townhouses" <%=listing.category==="Townhouses" ? "selected" : "" %>
+                                >Townhouses</option>
+
+                            <option value="Camps" <%=listing.category==="Camps" ? "selected" : "" %>>Camps / Tents
+                            </option>
+
+                            <option value="Historic" <%=listing.category==="Historic" ? "selected" : "" %>>Historic
+                                Places</option>
+
+                            <option value="Luxury" <%=listing.category==="Luxury" ? "selected" : "" %>>Luxury Homes
+                            </option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-dark btn-edit">EDIT</button>
+                </form>
+            </div>
+        </div>
+    </body>
