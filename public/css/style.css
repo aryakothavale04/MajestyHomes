@@ -124,7 +124,13 @@ body {
 /* show page */
 
 .show-img{
-    height: 35vh;
+    height: 60vh;
+}
+
+@media (max-width: 576px) {
+    .show-img {
+        height: 40px;
+    }
 }
 
 .show-btn{
